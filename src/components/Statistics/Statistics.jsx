@@ -1,44 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Notification } from 'components/Notification/Notification';
-export class Statistics extends Component {
-  // state = {
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // };
+import PropTypes from 'prop-types';
 
-  render() {
-    return (
-      <>
-        {this.props.good + this.props.neutral + this.props.bad > 0 ? (
-          <>
-            <h2>Statistics</h2>
-            <p>
-              Good:<span> {this.props.good}</span>
-            </p>
-            <p>
-              Neutral:<span> {this.props.neutral}</span>
-            </p>
-            <p>
-              Bad:<span> {this.props.bad}</span>
-            </p>
-            <p>
-              Total:
-              <span>
-                {' '}
-                {this.props.bad + this.props.neutral + this.props.good}
-              </span>
-            </p>
-            <p>
-              Positive feedback: <span>{this.props.calcGood}%</span>
-            </p>
-          </>
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </>
-    );
-  }
-}
+const Statistics = ({ good, neutral, bad, calcGood }) => {
+  return (
+    <>
+      {good + neutral + bad > 0 ? (
+        <>
+          <h2>Statistics</h2>
+          <p>
+            Good:<span> {good}</span>
+          </p>
+          <p>
+            Neutral:<span> {neutral}</span>
+          </p>
+          <p>
+            Bad:<span> {bad}</span>
+          </p>
+          <p>
+            Total:
+            <span> {bad + neutral + good}</span>
+          </p>
+          <p>
+            Positive feedback: <span>{calcGood}%</span>
+          </p>
+        </>
+      ) : (
+        <Notification message="There is no feedback" />
+      )}
+    </>
+  );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  calcGood: PropTypes.string.isRequired,
+};
 
 export default Statistics;
