@@ -19,13 +19,13 @@ const Button = styled.button`
 const Buttons = ({ onClickGood, onClickNeutral, onClickBad }) => {
   return (
     <ButtonBox>
-      <Button type="button" onClick={onClickGood}>
+      <Button name="good" type="button" onClick={onClickGood}>
         Good
       </Button>
-      <Button type="button" onClick={onClickNeutral}>
+      <Button name="neutral" type="button" onClick={onClickNeutral}>
         Neutral
       </Button>
-      <Button type="button" onClick={onClickBad}>
+      <Button name="bad" type="button" onClick={onClickBad}>
         Bad
       </Button>
     </ButtonBox>
